@@ -1,79 +1,61 @@
-# Connect Four AI — Flutter Application & Flask API
+# Connect Four AI — Lightweight Flutter & Flask Application
 
-Une application complète multiplateforme du jeu **Puissance 4 (Connect Four)** développée avec **Flutter**, alimentée par un backend **Flask** en Python[cite: 4]. L'IA adverse prend ses décisions de jeu grâce à l'algorithme **Minimax optimisé par l'élagage Alpha-Bêta (Alpha-Beta Pruning)**.
+This repository contains the core logic for a **Connect Four (Puissance 4)** application powered by a **Python Flask backend** with an **AI opponent using Minimax with Alpha-Beta Pruning**.
 
----
-
-## 🛠️ Fonctionnalités
-
-- **Interface Multiplateforme (Flutter) :** Disponible sur Android, iOS, Web, Windows, macOS et Linux[cite: 4].
-- **IA Intelligente (Minimax + Élagage Alpha-Bêta) :** Évaluation heuristique du plateau pour anticiper les coups du joueur et bloquer ses combinaisons gagnantes.
-- **Mode IA vs IA / Humain vs IA :** Support pour les affrontements entre un joueur humain et l'IA ou simulations de parties IA contre IA.
-- **API RESTful (Flask) :** Communication fluide via HTTP JSON entre l'application client et le serveur backend.
-- **Effets Sonores & Audio :** Intégration d'éléments audio pour enrichir l'expérience de jeu.
+> **Note on Repository Structure:**  
+> Standard Flutter auto-generated build files and platform folders (`android/`, `ios/`, `build/`, `.dart_tool/`) were excluded to keep the repository lightweight and efficient. Only the essential source code files (`/lib` for Flutter UI and core `.py` backend scripts) are included[cite: 5].
 
 ---
 
-## 📂 Structure du Dépôt
+## 🛠️ Features
+
+- **Core Game Engine:** Minimax algorithm with Alpha-Beta Pruning for intelligent AI moves.
+- **Flask REST API Backend:** Efficient client-server communication via HTTP endpoints.
+- **Lightweight Flutter Frontend:** Essential Dart files handling UI navigation, game views, and API calls[cite: 5].
+
+---
+
+## 📂 Repository Structure
 
 ```text
 .
-├── lib/                  # Code source principal de l'application Flutter[cite: 4]
-├── Audio/                # Fichiers audio et effets sonores du jeu[cite: 4]
-├── android/              # Fichiers de configuration pour Android[cite: 4]
-├── ios/                  # Fichiers de configuration pour iOS[cite: 4]
-├── web/                  # Fichiers de configuration pour le Web[cite: 4]
-├── windows/              # Fichiers de configuration pour Windows[cite: 4]
-├── main.py               # Serveur Flask / API RESTful
-├── project.py            # Moteur de jeu ConnectFourBoard (Minimax & Alpha-Beta)
-├── pubspec.yaml          # Dépendances du projet Flutter[cite: 4]
-└── README.md             # Documentation du projet[cite: 4]
+├── play.py                 # Flask server handling API routes and game loop[cite: 5]
+├── project.py              # ConnectFourBoard engine (Minimax & Alpha-Beta Pruning)[cite: 5]
+└── lib/                    # Essential Flutter source code[cite: 5]
+    ├── welcom.dart         # Welcome screen UI[cite: 5]
+    ├── main.dart           # App entry point and primary game interface[cite: 5]
+    └── main2.dart          # Secondary game mode interface[cite: 5]
 ```
 
 ---
 
-## 📡 Endpoints de l'API Flask
+## 📋 How to Run the Project
 
-Le serveur tourne par défaut sur `http://localhost:5000` :
+### 1. Start the Flask Backend (Python)
 
-| Méthode | Route | Description |
-| :--- | :--- | :--- |
-| `GET` | `/` | Vérifie l'état de l'API. |
-| `POST` | `/make_move` | Envoie le coup du joueur humain et déclenche la réponse de l'IA. |
-| `POST` | `/make_move2` | Déclenche un tour entre deux algorithmes d'IA. |
-| `GET` | `/get_board` | Récupère l'état actuel de la grille 6x7 sous forme de matrice JSON. |
-| `GET` | `/restart` | Réinitialise la grille de jeu. |
-| `GET` | `/game_over` | Vérifie si la partie est terminée (victoire, défaite ou égalité). |
-
----
-
-## 📋 Prérequis & Installation
-
-### 1. Démarrer le Backend Flask (Python)
-
-1. Installez les dépendances Python nécessaires :
+1. Install Python dependencies:
    ```bash
    pip install flask numpy
    ```
-2. Lancez le serveur Flask :
+2. Launch the Flask API server:
    ```bash
-   python main.py
+   python play.py
    ```
 
-### 2. Lancer l'Application Client (Flutter)
+### 2. Run the Flutter Frontend
 
-1. Assurez-vous d'avoir installé [Flutter SDK](https://flutter.dev/docs/get-started/install).
-2. Récupérez les packages et dépendances :
+1. Generate standard Flutter project files in your workspace:
    ```bash
-   flutter pub get
+   flutter create connect_four_app
    ```
-3. Exécutez l'application sur la plateforme de votre choix :
+2. Replace or copy the provided `lib/` directory contents (`main.dart`, `main2.dart`, `welcom.dart`) into your new project's `lib/` folder[cite: 5].
+3. Run the application:
    ```bash
    flutter run
    ```
 
 ---
 
-## 📄 Licence
+## 📄 License
 
-Ce projet est sous licence [MIT](LICENSE) - libre d'utilisation et de modification.
+This project is open-source and available under the [MIT License](LICENSE).
